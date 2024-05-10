@@ -1,6 +1,8 @@
 using Eletrodomestico;
 using Veículos;
 using Animais;
+using Enumeradores;
+using Arquivos;
 
 namespace Programa
 {   
@@ -44,10 +46,70 @@ namespace Programa
             animal.SomAnimal();
             porco.SomAnimal();
             cachorro.SomAnimal();
+
+            Console.WriteLine("");
+
+            // Exemplo de abstração;
             
             PorcoAbstrato porcoAbstrato = new PorcoAbstrato();
             porcoAbstrato.Dormir();
             porcoAbstrato.SomAnimal();
+
+            Console.WriteLine("");
+
+            // Exemplo de interface;
+
+            PorcoImplementacao porcoImplementacao = new PorcoImplementacao();
+            porcoImplementacao.SomAnimal();
+
+            Console.WriteLine("");
+
+            // Exemplo de enumeradores
+
+            IntensidadeDoPedal minhaIntensidade = IntensidadeDoPedal.Intenso;
+            switch(minhaIntensidade)
+            {
+                case IntensidadeDoPedal.Baixo:
+                    Console.WriteLine("Sua intensidade é baixa.");
+                    break;
+
+                case IntensidadeDoPedal.Médio:
+                    Console.WriteLine("Sua intensidade é média.");
+                    break;
+                
+                case IntensidadeDoPedal.Intenso:
+                    Console.WriteLine("Você é intenso!");
+                    break;
+            }
+
+            int numeroDaIntensidade = (int) IntensidadeDoPedal.Médio;
+
+            Console.WriteLine($"O nível da sua intensidade é {numeroDaIntensidade}");
+
+            Console.WriteLine("");
+
+            // Exemplo de leitura e criação de arquivos
+
+            Console.Write("Escreva seu texto: ");
+            string textoEntrada = Console.ReadLine();
+
+            Console.WriteLine("");
+
+            Console.Write("Digite o nome do arquivo onde irá salva-lo: ");
+            string arquivoEntrada = Console.ReadLine();
+
+            MeuArquivo meuObjArquivo1 = new MeuArquivo(textoEntrada, arquivoEntrada);
+
+            Console.WriteLine("");
+
+            Console.Write("Digite o nome do arquivo que você quer ler: ");
+            string leituraArquivo = Console.ReadLine();
+
+            string retornoLeitura = meuObjArquivo1.LerArquivo(leituraArquivo);
+
+            Console.WriteLine("");
+            
+            Console.WriteLine($"O texto do seu arquivo é: {retornoLeitura}");  
 
             Console.ReadKey();
             Console.WriteLine("");
